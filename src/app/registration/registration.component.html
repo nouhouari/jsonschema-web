@@ -1,6 +1,6 @@
 <div fxLayout="column" fxFlex="100">
 
-<p>{{fields | json}}</p>
+<p *ngIf="loading">Loading...</p>
 
 <form [formGroup]="form">
       <formly-form [form]="form" [fields]="fields"></formly-form>
