@@ -14,7 +14,7 @@ import { Dropdown } from '../model copy/json-schema.model';
         (infiniteScroll)="getNextBatch()"
         [formControl]="formControl"
         [formlyAttributes]="field"
-    
+        placeholder="{{ field.templateOptions?.label || 'Select' | translate }}"
         (valueChange)="onChange($event)"
       >
         <mat-option>
@@ -25,17 +25,14 @@ import { Dropdown } from '../model copy/json-schema.model';
             [preventHomeEndKeyPropagation]="true"
             [searching]="isLoading"
             [clearSearchInput]="false"
-            noEntriesFoundLabel="No entry matches"
-          >
+            noEntriesFoundLabel="No entry matches">
             <mat-icon (click)="onClearSearch()" ngxMatSelectSearchClear
-              >delete</mat-icon
-            >
+              >delete</mat-icon>
           </ngx-mat-select-search>
         </mat-option>
         <mat-option
           *ngFor="let option of dropdownOptions"
-          [value]="option.value"
-        >
+          [value]="option.value">
           {{ option.label }}
         </mat-option>
       </mat-select>

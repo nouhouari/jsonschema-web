@@ -9,19 +9,24 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyMaterialModule } from '@ngx-formly/material';
+
 import { NullTypeComponent } from './json-schema/null.type';
 import { ArrayTypeComponent } from './json-schema/array.type';
 import { ObjectTypeComponent } from './json-schema/object.type';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
-import { MatFormFieldModule} from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { CustomInputComponent } from './json-schema/string.type';
 import { MultiSchemaTypeComponent } from './json-schema/multischema.type';
 import { DropdownTypeComponent } from './json-schema/dropdown.type';
 
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function minLengthValidationMessage(error: any, field: FormlyFieldConfig) {
   return `Should have atleast ${field.props!.minLength} characters`;
@@ -54,14 +59,20 @@ export function maxValidationMessage(error: any, field: FormlyFieldConfig) {
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormlyMaterialModule,
     HttpClientModule,
     TranslateModule.forRoot(),
     RegistrationComponent,
+    
     MatFormFieldModule,
     MatSelectModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    
     NgxMatSelectSearchModule,
+
     FormlyMatToggleModule,
+    FormlyMaterialModule,
     FormlyModule.forRoot({
       validationMessages: [
         { name: 'required', message: 'This field is required' },
@@ -100,7 +111,8 @@ export function maxValidationMessage(error: any, field: FormlyFieldConfig) {
         { name: 'array', component: ArrayTypeComponent },
         { name: 'object', component: ObjectTypeComponent },
       ],
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
